@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 export default function APage() {
-  return <div>A</div>;
+  return <Button>A 페이지</Button>;
 }
