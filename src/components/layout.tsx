@@ -18,6 +18,10 @@ export default function Layout() {
       label: "b",
       path: "b",
     },
+    {
+      label: "c",
+      path: "c",
+    },
   ];
   const navigate = useNavigate();
 
