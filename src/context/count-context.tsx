@@ -21,7 +21,7 @@ interface Props {
   initial?: number;
 }
 
-export function CountContextProvider({ children, initial = 0 }: Props) {
+export function CountContextProvider({ children, initial = 1 }: Props) {
   const [count, setCount] = useState(initial);
   return (
     <CountContext.Provider value={{ count, setCount }}>
