@@ -1,31 +1,45 @@
 import { Button } from "@/components/ui/button";
 import { CountContext } from "@/context/count-context";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 
 export default function APage() {
   const { count, setCount } = useContext(CountContext);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const countRef = useRef<number>(count);
+
+  useEffect(() => {
+    // count 변경 시 최신 값 업데이트
+    countRef.current = count;
+  }, [count]);
 
   useEffect(() => {
     console.log("✅ Creating an interval");
+
     const id = setInterval(() => {
-      console.log("⏰ Interval tick");
-      setCount((prevCount) => {
-        if (prevCount === 10) {
+      if (buttonRef.current) {
+        if (countRef.current === 10) {
           console.log("❌ Clearing an interval by condition");
           clearInterval(id);
-          return prevCount;
+        } else {
+          console.log("⏰ Interval tick");
+          buttonRef.current.click();
         }
-        return prevCount + 1;
-      });
+      }
     }, 1000);
 
-    console.log(id);
     return () => {
       console.log("❌ Clearing an interval by unmounted");
       clearInterval(id);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <Button className="w-20">{count}</Button>;
+  return (
+    <Button
+      className="w-20"
+      ref={buttonRef}
+      onClick={() => setCount(count + 1)}
+    >
+      {Math.min(count + 1, 10)}
+    </Button>
+  );
 }
