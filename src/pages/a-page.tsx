@@ -35,7 +35,7 @@ export default function APage() {
 
   return (
     <Button
-      className="w-20"
+      className="w-full"
       ref={buttonRef}
       onClick={() => setCount(count + 1)}
     >
