@@ -39,7 +39,7 @@ export default function APage() {
       ref={buttonRef}
       onClick={() => setCount(count + 1)}
     >
-      {Math.min(count + 1, 10)}
+      {count}
     </Button>
   );
 }
