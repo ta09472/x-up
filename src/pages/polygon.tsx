@@ -2,39 +2,41 @@ import DeckGL from "@deck.gl/react";
 import { PolygonLayer } from "@deck.gl/layers";
 import * as turf from "@turf/turf";
 
+// 폴리곤 데이터 정의 (A, B, C, D 좌표)
 const polygonData = [
-  [-122.41669, 37.7853], // 시작점
-  [-122.41669, 37.781],
-  [-122.411, 37.781],
-  [-122.411, 37.7853],
-  [-122.41669, 37.7853], // 끝점 (시작점과 동일)
+  [-122.41669, 37.7853], // A
+  [-122.41669, 37.781], // B
+  [-122.411, 37.781], // C
+  [-122.411, 37.7853], // D
+  [-122.41669, 37.7853], // A (폴리곤 닫기)
 ];
 
-// 중심점 계산
-const center = turf.centroid(turf.polygon([polygonData])).geometry.coordinates;
+// 폴리곤 생성
+const polygon = turf.polygon([polygonData]);
 
 const INITIAL_VIEW_STATE = {
-  longitude: center[0],
-  latitude: center[1],
+  longitude: -122.41669,
+  latitude: 37.7853,
   zoom: 13,
   pitch: 0,
   bearing: 0,
 };
 
-const layers = [
-  new PolygonLayer({
-    id: "polygon-layer",
-    data: [{ coordinates: polygonData }],
-    getPolygon: (d) => d.coordinates,
-    // getFillColor: [0, 0, 0, 0],
-    getLineColor: [0, 0, 0],
-    lineWidthMinPixels: 2,
-  }),
-];
+export default function Visualize() {
+  const layers = [
+    // 폴리곤
+    new PolygonLayer({
+      id: "polygon-layer",
+      data: [polygon],
+      getPolygon: (d) => d.geometry.coordinates,
+      getFillColor: [0, 0, 0, 255],
+      getLineColor: [255, 255, 255],
+      getLineWidth: 5,
+    }),
+  ];
 
-export default function Polygon() {
   return (
-    <div className="relative w-[500px] h-[500px] border border-neutral-300 rounded-lg">
+    <div className=" w-[500px] h-[500px]">
       <DeckGL
         initialViewState={INITIAL_VIEW_STATE}
         controller
