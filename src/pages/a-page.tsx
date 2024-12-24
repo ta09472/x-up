@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { CountContext } from "@/context/count-context";
-import { useContext, useEffect, useRef } from "react";
+import { useCountStore } from "@/store/count";
+import { useEffect, useRef } from "react";
 
 export default function APage() {
-  const { count, setCount } = useContext(CountContext);
+  const { count, setCount } = useCountStore();
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const countRef = useRef<number>(count);
 

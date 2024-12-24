@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { CountContext } from "@/context/count-context";
-import { useContext } from "react";
+
+import { useCountStore } from "@/store/count";
 
 export default function CPage() {
-  const { count } = useContext(CountContext);
+  const { count } = useCountStore();
 
   return <Button className=" w-full">{count === 10 ? 2 : 0}</Button>;
 }
