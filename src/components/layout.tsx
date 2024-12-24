@@ -22,6 +22,10 @@ export default function Layout() {
       label: "c",
       path: "c",
     },
+    {
+      label: "polygon",
+      path: "polygon",
+    },
   ];
   const navigate = useNavigate();
 
