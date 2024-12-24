@@ -35,9 +35,10 @@ export default function APage() {
 
   return (
     <Button
-      className="w-full"
+      size={"lg"}
       ref={buttonRef}
       onClick={() => setCount(count + 1)}
+      className="min-w-20"
     >
       {count}
     </Button>

@@ -33,9 +33,9 @@ const ePoint = turf.point(lineEF.geometry.coordinates[0]); // E-F 선의 시작�
 const fPoint = turf.point(lineEF.geometry.coordinates[1]); // E-F 선의 끝점
 
 const INITIAL_VIEW_STATE = {
-  longitude: -122.41669,
-  latitude: 37.7853,
-  zoom: 13,
+  longitude: -122.414,
+  latitude: 37.783,
+  zoom: 16,
   pitch: 0,
   bearing: 0,
 };
