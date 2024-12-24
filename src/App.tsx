@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router";
 import Layout from "@/components/layout";
 import APage from "./pages/a-page";
 import { CountContextProvider } from "./context/count-context";
+import BPage from "./pages/b-page";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<APage />} />
+          <Route path="/b" element={<BPage />} />
         </Route>
       </Routes>
     </CountContextProvider>
